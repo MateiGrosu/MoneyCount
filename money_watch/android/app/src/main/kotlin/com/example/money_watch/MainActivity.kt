@@ -1,4 +1,4 @@
-package com.example.money_watch
+package com.money_watch
 
 import io.flutter.embedding.android.FlutterActivity
 

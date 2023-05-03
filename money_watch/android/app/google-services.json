@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "760741204310",
+    "firebase_url": "https://moneycount-b3c97-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "moneycount-b3c97",
+    "storage_bucket": "moneycount-b3c97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760741204310:android:5e2f54edd4730b5e00c6f7",
+        "android_client_info": {
+          "package_name": "com.money_watch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760741204310-0op577imis9i74rueq9hu3ta8imkufp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD81YDfIYONsXP3fWWAVDUKYnhmOr8Fomk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760741204310-0op577imis9i74rueq9hu3ta8imkufp8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760741204310-3cehv9oib69seq3npbd9o5i4pp4ippbj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.moneyWatch"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
