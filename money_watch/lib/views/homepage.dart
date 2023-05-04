@@ -24,7 +24,9 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey,
         title: const Text("Money watch"),
       ),
-      body: _pages.elementAt(_selectedIndex),
+      body: SingleChildScrollView(
+        child: _pages.elementAt(_selectedIndex),
+      ),
       backgroundColor: Color.fromARGB(255, 99, 100, 99),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
