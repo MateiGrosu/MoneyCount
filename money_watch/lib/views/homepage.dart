@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_watch/api/firebase.dart';
 import 'package:money_watch/views/home_view.dart';
 import 'package:money_watch/views/total_view.dart';
 
@@ -12,21 +13,37 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    HomeView(),
-    totalSpendingList(),
-  ];
+  var list = getListID();
+  List<dynamic> _spendTotal = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getTotalSpend();
+  }
+
+  _getTotalSpend() async {
+    final data = await getSpend();
+    setState(() {
+      _spendTotal = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      HomeView(),
+      SpendView(
+        spendTotal: _spendTotal,
+      ),
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: const Text("Money watch"),
       ),
-      body: SingleChildScrollView(
-        child: _pages.elementAt(_selectedIndex),
-      ),
+      body: _pages.elementAt(_selectedIndex),
       backgroundColor: Color.fromARGB(255, 99, 100, 99),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
