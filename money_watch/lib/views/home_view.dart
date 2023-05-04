@@ -118,6 +118,7 @@ class _HomeViewState extends State<HomeView> {
                             Column(
                               children: [
                                 TextField(
+                                  keyboardType: TextInputType.number,
                                   controller: _amountSpendController,
                                   autofocus: true,
                                   decoration: InputDecoration(
@@ -166,6 +167,7 @@ class _HomeViewState extends State<HomeView> {
                             Column(
                               children: [
                                 TextField(
+                                  keyboardType: TextInputType.number,
                                   controller: _earnController,
                                   autofocus: true,
                                   decoration: InputDecoration(
