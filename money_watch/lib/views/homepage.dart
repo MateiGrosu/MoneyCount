@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_watch/api/firebase.dart';
+import 'package:money_watch/logic/wallet.dart';
+import 'package:money_watch/model/spending_model.dart';
 import 'package:money_watch/views/home_view.dart';
 import 'package:money_watch/views/total_view.dart';
 
@@ -14,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   var list = getListID();
-  List<dynamic> _spendTotal = [];
+  List<SpendingModel> _spendTotal = [];
 
   @override
   void initState() {
@@ -24,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getTotalSpend() async {
-    final data = await getSpend();
+    final data = await spendingsList();
     setState(() {
       _spendTotal = data;
     });
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.abc),
+            icon: Icon(Icons.money_off_csred_outlined),
             label: 'Spendings',
           ),
         ],

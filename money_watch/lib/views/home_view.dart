@@ -16,7 +16,9 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   var _monthTotal;
+  var _startMonthTotal;
 
+  var _chosenMonth;
   TextEditingController _amountSpendController = TextEditingController();
   TextEditingController _earnController = TextEditingController();
 
@@ -29,30 +31,59 @@ class _HomeViewState extends State<HomeView> {
 
   _getMonthTotal() async {
     final data = await getMonthTotal('march');
+    final all = await getStartMonthTotal('march');
     setState(() {
       _monthTotal = data;
+      _startMonthTotal = all;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    double percentage = 0.40;
+    double percentage = (((_startMonthTotal - _monthTotal) / _startMonthTotal));
+    double result = double.parse(percentage.toStringAsFixed(2));
+    print(result);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(50),
+          const Padding(padding: EdgeInsets.all(10)),
+          DropdownButton<String>(
+            hint: Text('Select Month'),
+            focusColor: Colors.white,
+            value: _chosenMonth,
+            style: const TextStyle(color: Colors.black),
+            items: <String>[
+              'march',
+              'april',
+              'may',
+            ].map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: ((value) {
+              setState(() {
+                _chosenMonth = value;
+                print(value);
+              });
+            }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
           ),
           Align(
             alignment: Alignment.center,
             child: CircularPercentIndicator(
               radius: 150.0,
               lineWidth: 30.0,
-              percent: percentage,
+              percent: result,
               startAngle: 270,
-              center: Text(" ${percentage * 100} % / totalMoney"),
-              progressColor: Colors.blueGrey,
+              reverse: true,
+              center: Text(" $_monthTotal / $_startMonthTotal"),
+              progressColor: Colors.red,
+              backgroundColor: Colors.green,
               //footer: const Text("Your bal"),
             ),
           ),
